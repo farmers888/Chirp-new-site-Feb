@@ -15,12 +15,12 @@ export const MENUS = {
       label: 'Pricing',
     },
     {
-      href: '/contact-us',
-      label: 'Contact us',
+      href: '/connect-and-surface',
+      label: 'Connect & Surface',
     },
     {
-      href: '/go-campaign',
-      label: 'Landing',
+      href: '/contact-us',
+      label: 'Contact us',
     },
   ],
   footer: {
