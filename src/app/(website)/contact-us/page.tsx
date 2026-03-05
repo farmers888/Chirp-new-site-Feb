@@ -1,35 +1,15 @@
 import { Metadata } from 'next';
 import NextLink from 'next/link';
-import { ArrowRight, Clock, Lock, Mail } from 'lucide-react';
 
 import { getMetadata } from '@/lib/get-metadata';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Link } from '@/components/ui/link';
-import CtaSplit from '@/components/pages/contact-us/cta--split';
-import FaqSplit from '@/components/pages/contact-us/faq--split';
-import HeroFeatures from '@/components/pages/contact-us/hero--features';
-import TestimonialLogoRow from '@/components/pages/contact-us/testimonial--logo-row';
+import CommunityColumnWide from '@/components/pages/contact-us/community--column-wide';
+import CtaCoverGrid from '@/components/pages/contact-us/cta--cover-grid';
+import HeroTestimonial from '@/components/pages/contact-us/hero--testimonial';
 
 const contentData = {
-  'hero--features': {
-    items: [
-      {
-        title: 'Fast response',
-        lucideIcon: <Mail />,
-        description: 'We reply within 1–2 business days.',
-      },
-      {
-        title: 'Secure by default',
-        lucideIcon: <Lock />,
-        description: 'Your data stays private and protected.',
-      },
-      {
-        title: 'Flexible times',
-        lucideIcon: <Clock />,
-        description: 'Book a time that fits your schedule.',
-      },
-    ],
+  'hero--testimonial': {
     logos: [
       {
         alt: 'Case Status',
@@ -98,86 +78,93 @@ const contentData = {
         height: 24,
       },
     ],
-    title: 'Let’s talk about your project',
-    description: 'Share a few details and we’ll follow up soon.',
+    title: 'We’re here to help',
+    blockquote: {
+      role: 'Head of Engineering',
+      quote: 'The team was incredibly helpful and got us live in days.',
+      authors: {
+        name: 'Jane Doe',
+        photo: '/images/placeholder-author.svg',
+      },
+    },
+    description: 'Questions about pricing, features, or migration? We’ve got you.',
   },
-  'faq--split': {
-    items: [
+  'community--column-wide': {
+    label: 'Connect with us',
+    title: 'Stay connected with Chirp updates',
+    socials: [
       {
-        answer:
-          'Chirp integrates directly with popular platforms like HubSpot, Outlook, and Notion, syncing your data in real time to keep everything unified.',
-        question: 'How does Chirp connect with my sales tools?',
+        url: 'https://slack.example.com',
+        icon: 'slack' as const,
+        title: 'Twitter',
+        linkText: 'Follow',
+        description: 'Latest product news and insights',
       },
       {
-        answer:
-          'Chirp consolidates sales data from all your systems, reducing context switching and giving you a single source of truth.',
-        question: 'What if I have data spread across multiple CRMs?',
+        url: 'https://twitter.com/example',
+        icon: 'twitter' as const,
+        title: 'LinkedIn',
+        linkText: 'Follow',
+        description: 'Professional updates and articles',
       },
       {
-        answer:
-          'Yes, Chirp scales from solo users to growing teams, offering tailored plans that fit your needs and budget.',
-        question: 'Is Chirp suitable for small sales teams?',
+        url: 'https://github.com/example',
+        icon: 'github' as const,
+        title: 'GitHub',
+        linkText: 'Explore',
+        description: 'Explore our integrations and code',
       },
       {
-        answer:
-          'Security is built into Chirp with compliance to HIPAA, GDPR, SOC 2 Type II, and ISO 27001 standards.',
-        question: 'How secure is my data with Chirp?',
+        url: 'https://www.linkedin.com/company/example/',
+        icon: 'linkedin' as const,
+        title: 'Product Hunt',
+        linkText: 'Visit',
+        description: 'See user reviews and launch updates',
       },
       {
-        answer:
-          'We offer a free Hobby tier and a two-week Pro trial so you can experience Chirp’s value first-hand.',
-        question: 'Can I try Chirp before committing?',
+        url: 'https://discord.gg/example',
+        icon: 'discord' as const,
+        title: 'Slack',
+        linkText: 'Join',
+        description: 'Join our community for support',
       },
     ],
-    title: 'Frequently Asked Questions',
+    description: 'Follow our channels for the latest news and tips to close deals faster.',
   },
-  'testimonial--logo-row': {
-    quote: {
-      logo: {
-        alt: 'Case Status',
-        src: '/images/logos/hex.svg',
-        width: 97,
-        height: 24,
-      },
-      role: 'Product Designer',
-      quote:
-        'Partnering with Acme Company has completely transformed how we operate. Their team delivered a robust platform that not only simplified our workflows but also enhanced our team’s productivity. What stood out most was their dedication to quality and their ability to truly understand our needs.',
-      authors: [
-        {
-          name: 'Alex Rivera',
-          photo: '/images/placeholder-author.svg',
-        },
-      ],
-      linkUrl: '/case-study',
-      linkText: 'Case study',
-    },
-  },
-  'cta--split': {
+  'cta--cover-grid': {
     image: {
       alt: '',
       src: '/images/placeholder-1x1.svg',
-      width: 544,
-      height: 544,
+      width: 448,
+      height: 448,
     },
-    label: 'Contact Us',
-    title: 'Get in touch with Chirp sales',
+    items: [
+      {
+        title: 'Discover how Chirp unifies your sales data',
+        actions: (
+          <Button className="mt-6 lg:mt-8" variant="secondary" asChild>
+            <NextLink href={'/'}>Explore integrations</NextLink>
+          </Button>
+        ),
+        description: 'Learn how Chirp integrates your tools into one streamlined platform.',
+      },
+      {
+        title: 'Book a personalized demo',
+        actions: (
+          <Button className="mt-6 lg:mt-8" variant="secondary" asChild>
+            <NextLink href={'/'}>Schedule demo</NextLink>
+          </Button>
+        ),
+        description: 'See Chirp in action and ask your questions live.',
+      },
+    ],
+    title: 'Get started with Chirp today',
     actions: (
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-6 lg:flex-nowrap lg:gap-x-7">
-        <Button variant="default" asChild>
-          <NextLink href={'/'}>See platform</NextLink>
-        </Button>{' '}
-        <Link
-          className="w-fit gap-x-1 leading-none lg:leading-none"
-          href={'/'}
-          variant="foreground"
-          animation="arrow-right"
-        >
-          Book demo <ArrowRight size={16} />
-        </Link>
-      </div>
+      <Button className="mt-5 md:mt-6 lg:mt-8" variant="default" asChild>
+        <NextLink href={'/'}>Get started</NextLink>
+      </Button>
     ),
-    description:
-      'Have questions or want a personalized demo? Fill out the form and our team will respond promptly to help you get started.',
+    description: 'Choose your path to clearer deals and faster closes.',
   },
 };
 
@@ -199,10 +186,9 @@ export const metadata: Metadata = getMetadata({
 export default function ContactUsPage() {
   return (
     <main className="pb-12 md:pb-14 lg:pb-16 xl:pb-24">
-      <HeroFeatures {...contentData['hero--features']} />
-      <FaqSplit {...contentData['faq--split']} />
-      <TestimonialLogoRow {...contentData['testimonial--logo-row']} />
-      <CtaSplit {...contentData['cta--split']} />
+      <HeroTestimonial {...contentData['hero--testimonial']} />
+      <CommunityColumnWide {...contentData['community--column-wide']} />
+      <CtaCoverGrid {...contentData['cta--cover-grid']} />
     </main>
   );
 }

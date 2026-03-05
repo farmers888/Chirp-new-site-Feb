@@ -18,9 +18,14 @@ function SectionSplit({
   actions,
 }: ISectionSplitProps) {
   return (
-    <section className={cn('section-split w-full py-12 md:py-14 lg:py-16 xl:py-24', className)}>
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-x-16 gap-y-10 px-5 md:gap-y-14 md:px-8 lg:grid lg:grid-cols-2 xl:gap-x-32">
-        <header className="mx-auto flex w-full max-w-xl flex-col md:max-w-3xl">
+    <section
+      className={cn(
+        'section-split w-full overflow-hidden py-12 md:py-14 lg:py-16 xl:py-24',
+        className,
+      )}
+    >
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-x-32 gap-y-10 px-5 md:gap-y-16 md:px-8 xl:grid xl:grid-cols-2">
+        <header className="flex w-full max-w-xl flex-col md:max-w-3xl">
           {label && <Badge className="mb-5 lg:mb-9">{label}</Badge>}
           <h2 className="lg:leading-tighter text-3xl leading-tight font-semibold tracking-tight text-balance md:text-4xl md:leading-tight lg:text-5xl">
             {title}
@@ -33,13 +38,13 @@ function SectionSplit({
           {actions}
         </header>
 
-        <div className="aspect-square w-full max-w-lg shrink-0 overflow-hidden rounded-[.625rem] md:rounded-2xl lg:order-first lg:max-w-full">
+        <div className="relative flex w-full max-w-3xl shrink-0 items-center">
           <Image
-            className="h-auto w-full rounded-[.625rem] md:rounded-2xl"
-            src={image.src ?? '/images/placeholder-1x1.svg'}
+            className="relative aspect-4/3 h-auto w-full max-w-none shrink-0 rounded-[.625rem] md:rounded-2xl xl:h-154 xl:w-auto"
+            src={image.src ?? '/images/placeholder-4x3.svg'}
             alt={image.alt ?? ''}
-            width={image.width ?? 544}
-            height={image.height ?? 544}
+            width={image.width ?? 821}
+            height={image.height ?? 616}
           />
         </div>
       </div>

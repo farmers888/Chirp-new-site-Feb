@@ -1,10 +1,13 @@
 import type { Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import { cookieBanner } from '@/configs/cookie-banner-config';
 import config from '@/configs/website-config';
 import { MENUS } from '@/constants/menus';
 import { Providers } from '@/contexts';
 
+import AnnouncementBanner from '@/components/announcement-banner';
+import CookieBanner from '@/components/cookie-banner';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 
@@ -47,12 +50,23 @@ export default async function RootLayout({
             vaul-drawer-wrapper=""
           >
             {/* <slot:announcement-banner> */}
+            <AnnouncementBanner
+              title="Build stunning GUIs effortlessly on top of your Python code "
+              linkText="Try our free trial"
+              variant="link"
+              linkUrl="/"
+            />
             {/* </slot:announcement-banner> */}
             <Header menuItems={MENUS.header} />
             <div className="grow">{children}</div>
             <Footer />
           </div>
           {/* <slot:cookie-banner> */}
+          <CookieBanner
+            description={cookieBanner.description}
+            allowSettingsCustomization={cookieBanner.allowSettingsCustomization}
+            isInitiallyExpanded={cookieBanner.isInitiallyExpanded}
+          />
           {/* </slot:cookie-banner> */}
         </Providers>
       </body>

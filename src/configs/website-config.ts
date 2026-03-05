@@ -19,13 +19,13 @@ const config = {
     contentWidth: 704,
     basePath: '/blog',
   },
+  legal: {
+    contentDir: 'src/content/',
+  },
   docs: {
     basePath: '/docs',
     rootPage: '/docs/introduction',
     contentDir: 'src/content/docs',
-  },
-  legal: {
-    contentDir: 'src/content/',
   },
 };
 

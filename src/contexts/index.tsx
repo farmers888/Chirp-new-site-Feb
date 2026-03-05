@@ -3,6 +3,7 @@
 import { ReactNode } from 'react';
 
 import { CodeLanguageProvider } from './code-language-context';
+import { CookieBannerProvider } from './cookie-banner-context';
 import { ThemeProvider } from './theme-context';
 
 interface ProvidersProps {
@@ -21,7 +22,9 @@ export function Providers({ children }: ProvidersProps) {
         enableColorScheme
       >
         {/* <slot:cookie-banner-provider-wrapper> */}
-        <CodeLanguageProvider>{children}</CodeLanguageProvider>
+        <CookieBannerProvider>
+          <CodeLanguageProvider>{children}</CodeLanguageProvider>
+        </CookieBannerProvider>
         {/* </slot:cookie-banner-provider-wrapper> */}
       </ThemeProvider>
       {/* </slot:theme-provider-wrapper> */}

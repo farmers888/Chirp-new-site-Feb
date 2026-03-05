@@ -26,6 +26,10 @@ export const MENUS = {
   footer: {
     main: [
       {
+        href: '/data-processing-annex',
+        label: 'Legal',
+      },
+      {
         href: '/privacy-policy',
         label: 'Privacy Policy',
       },
